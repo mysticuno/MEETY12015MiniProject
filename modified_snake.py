@@ -59,8 +59,9 @@ power_up_present = False
 move_step_time = 1000
 food_step_time = 5000
 trash_step_time = 5000
-power_up_step_time = 5000 #attempt to spawn powerup every 5 seconds
-power_up_chance = .1
+power_up_step_time = 3000 #attempt to spawn powerup every 3 seconds
+power_up_chance = .1*(1+trash_count/10.)
+POWER_UP_TIME = 10000
 
 score = 0
 scoreboard = turtle.clone()
@@ -137,15 +138,14 @@ def calculate_score():
 # Change to golden snake, speed up, can remove trash
 def power_up():
     print('RECYCLE TIME!')
-    global can_recycle
+    global can_recycle, move_step_time, POWER_UP_TIME
     can_recycle = True
         
     snake.pencolor("yellow")
     snake.fillcolor('yellow')
-    global move_step_time
     move_step_time = int(move_step_time * 2/3)
     
-    turtle.ontimer(power_down, 10000) #power down after 10 seconds    
+    turtle.ontimer(power_down, POWER_UP_TIME) #power down after POWER_UP_TIME seconds    
 
 # Change color to normal, slow down, stop recycling
 def power_down():
