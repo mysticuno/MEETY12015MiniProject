@@ -3,11 +3,8 @@
 This is an example of what students might make out of the mini project.
 """
 #TODO: Change variables for time and power up chance
-#TODO: Make sure power-ups don't spawn too often
-#TODO: Make sure score updates continuously
 #TODO: Change icons for food, trash, power_up
 #TODO: Standardize variable names
-#TODO: Display scores (like trash count and food count)
 #TODO: Fix bug where speed is constantly increased if score%100 = 0
 
 import turtle
@@ -22,8 +19,8 @@ turtle.tracer()
 wall = turtle.clone()
 wall.shape("square")
 wall.shapesize(20, 40, 20)
-wall.pencolor('blue')
-wall.fillcolor("light blue")
+wall.pencolor('green')
+wall.fillcolor("light green")
 wall.stamp()
 
 # get the wall boundaries
@@ -274,8 +271,8 @@ turtle.listen()
 food_positions = []
 food_stamps = []
 food = turtle.clone()
-turtle.register_shape("recycle.gif") #TODO: CHANGE TO DIFFERENT GIF
-food.shape("recycle.gif")
+turtle.register_shape("apple.gif") 
+food.shape("apple.gif")
 
 # Spawns a new food, removes the oldest food if there are too many on the board
 def spawn_food():
@@ -296,10 +293,10 @@ def spawn_food():
     
 # Initialize trash
 trash = turtle.clone()
-trash_positions = {} #STAMPID ==> ['trash','position','tuples']
+trash_positions = {}
 trash_position_values = {}
 trash_stamps = []
-turtle.register_shape("cokebottle.gif") #TODO: CHANGE TO POOP EMOJI
+turtle.register_shape("cokebottle.gif")
 trash.shape("cokebottle.gif")
 
 # Spawns a new trash
@@ -338,7 +335,8 @@ def spawn_trash():
 # Initialize power up
 power_up_turtle = turtle.clone()
 recycle_positions = []
-power_up_turtle.shape('turtle') #TODO: CHANGE TO RECYCLE AFTER FOOD IS CHANGED
+turtle.register_shape('recycle.gif')
+power_up_turtle.shape('recycle.gif')
 
 # Spawns a power up that allows the player to remove trash
 def spawn_power_up():
@@ -363,22 +361,6 @@ def despawn_power_up():
         recycle_positions.pop()
         power_up_turtle.clearstamps()
         turtle.ontimer(spawn_power_up, power_up_step_time)
-
-def spawn_food():
-    if game_over:
-        return
-    global food_remaining
-    food.setpos(random.randint(int(MIN_X/20)+1,int(MAX_X)/20-1)*20, 
-                random.randint(int(MIN_Y)/20+1, int(MAX_Y)/20-1)*20)
-    food_positions.append(food.pos())
-    food_stamps.append(food.stamp())
-    turtle.ontimer(spawn_food, food_step_time)
-    if len(food_stamps) > min(5, food_remaining):
-        food.clearstamp(food_stamps.pop(0))
-        food_positions.pop(0)
-  
-    if food_remaining == 0:
-        trigger_game_over()
 
 # Deals with the timing of the animations
 turtle.ontimer(move_step, move_step_time)
