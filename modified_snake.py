@@ -2,8 +2,6 @@
 """
 This is an example of what students might make out of the mini project.
 """
-#TODO: Standardize variable names
-#TODO: Fix bug where speed is constantly increased if score%100 = 0
 
 import turtle
 import random
@@ -120,7 +118,6 @@ def calculate_score():
              recycle_score*times_recycled - trash_penalty*trash_count
     scoreboard.clear()
 
-    scoreboard.speed('fastest')
     scoreboard.setpos(MIN_X, MIN_Y-50)
     scoreboard.write("Score: %s" % score, align="center", font=("Arial", 20, "bold"))
 
