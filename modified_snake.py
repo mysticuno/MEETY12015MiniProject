@@ -2,8 +2,6 @@
 """
 This is an example of what students might make out of the mini project.
 """
-#TODO: Change variables for time and power up chance
-#TODO: Change icons for food, trash, power_up
 #TODO: Standardize variable names
 #TODO: Fix bug where speed is constantly increased if score%100 = 0
 
@@ -58,11 +56,11 @@ can_recycle = False
 game_over = False
 power_up_present = False
 
-move_step_time = int(1000/5.)
-food_step_time = int(5000/5.)
-trash_step_time = int(5000/5.)
-power_up_step_time = 1000 #attempt to spawn powerup every 5 seconds
-power_up_chance = .1*5
+move_step_time = 1000
+food_step_time = 5000
+trash_step_time = 5000
+power_up_step_time = 5000 #attempt to spawn powerup every 5 seconds
+power_up_chance = .1
 
 score = 0
 scoreboard = turtle.clone()
