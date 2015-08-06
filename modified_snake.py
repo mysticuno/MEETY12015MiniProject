@@ -15,8 +15,8 @@ turtle.tracer()
 wall = turtle.clone()
 wall.shape("square")
 wall.shapesize(20, 40, 20)
-wall.pencolor('green')
-wall.fillcolor("light green")
+wall.pencolor('black')
+wall.fillcolor("light blue")
 wall.stamp()
 
 # get the wall boundaries
