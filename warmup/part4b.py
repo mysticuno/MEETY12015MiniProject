@@ -12,19 +12,23 @@ DIRECTION = 0
 def up():
     global DIRECTION
     DIRECTION = UP
+    controlled_block()
 
 def down():
     global DIRECTION
     DIRECTION = DOWN
-
+    controlled_block()
+    
 def left():
     global DIRECTION
     DIRECTION = LEFT
-
+    controlled_block()
+    
 def right():
     global DIRECTION
     DIRECTION = RIGHT
-
+    controlled_block()
+    
 t.onkey(up, "Up")
 t.onkey(down, "Down")
 t.onkey(left, "Left")
@@ -71,13 +75,13 @@ def controlled_block():
     t.clearstamp(STAMP_ID)
     
     if DIRECTION == 0: #move up    
-        BLOCK_POS = (BLOCK_POS[0],BLOCK_POS[1]+10)
+        BLOCK_POS = (BLOCK_POS[0],BLOCK_POS[1]+20)
     elif DIRECTION == 1: #move down
-        BLOCK_POS = (BLOCK_POS[0],BLOCK_POS[1]-10)
+        BLOCK_POS = (BLOCK_POS[0],BLOCK_POS[1]-20)
     elif DIRECTION == 2: #move left
-        BLOCK_POS = (BLOCK_POS[0] - 10,BLOCK_POS[1])
+        BLOCK_POS = (BLOCK_POS[0] - 20,BLOCK_POS[1])
     elif DIRECTION == 3: #move right
-        BLOCK_POS = (BLOCK_POS[0]+10,BLOCK_POS[1])
+        BLOCK_POS = (BLOCK_POS[0]+20,BLOCK_POS[1])
 
     nx,ny = BLOCK_POS
     t.setpos(nx,ny)
@@ -85,4 +89,4 @@ def controlled_block():
         
 
 
-t.mainloop()
+#t.mainloop()

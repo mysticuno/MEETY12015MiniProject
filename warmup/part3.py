@@ -15,7 +15,7 @@ def stamp_block():
     '''
     ## HINT
     global STAMP_ID
-    STAMP_ID = turtle.stamp()
+    STAMP_ID = t.stamp()
 
 def erase_block():
     '''
@@ -33,7 +33,7 @@ def big_rectangle(x,y):
     global STAMP_IDs
     for i in range(x):
         for j in range(y):
-            t.setpos(i*10,j*10)
+            t.setpos(i*20,j*20)
             STAMP_IDs.append(t.stamp())
 
 def erase_rectangle():
@@ -44,4 +44,4 @@ def erase_rectangle():
     for stamp in STAMP_IDs:
         t.clearstamp(stamp)
 
-t.mainloop()
+#t.mainloop()

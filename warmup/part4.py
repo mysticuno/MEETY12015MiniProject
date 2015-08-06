@@ -48,13 +48,13 @@ def controlled_block(DIRECTION):
     t.clearstamp(STAMP_ID)
     
     if DIRECTION == 0: #move up    
-        BLOCK_POS = (BLOCK_POS[0],BLOCK_POS[1]+10)
+        BLOCK_POS = (BLOCK_POS[0],BLOCK_POS[1]+20)
     elif DIRECTION == 1: #move down
-        BLOCK_POS = (BLOCK_POS[0],BLOCK_POS[1]-10)
+        BLOCK_POS = (BLOCK_POS[0],BLOCK_POS[1]-20)
     elif DIRECTION == 2: #move left
-        BLOCK_POS = (BLOCK_POS[0] - 10,BLOCK_POS[1])
+        BLOCK_POS = (BLOCK_POS[0] - 20,BLOCK_POS[1])
     elif DIRECTION == 3: #move right
-        BLOCK_POS = (BLOCK_POS[0]+10,BLOCK_POS[1])
+        BLOCK_POS = (BLOCK_POS[0]+20,BLOCK_POS[1])
 
     nx,ny = BLOCK_POS
     t.setpos(nx,ny)
@@ -62,4 +62,4 @@ def controlled_block(DIRECTION):
         
 
 
-t.mainloop()
+#t.mainloop()

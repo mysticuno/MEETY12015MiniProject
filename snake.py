@@ -8,8 +8,8 @@ import random
 
 turtle.penup()
 turtle.ht()
-
-turtle.tracer()
+turtle.title("Python the Python Python")
+#turtle.tracer()
 
 # draw wall
 wall = turtle.clone()
