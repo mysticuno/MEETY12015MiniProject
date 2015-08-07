@@ -1,3 +1,4 @@
+
 import turtle as t
 
 t.penup() #move pen without writing
@@ -38,4 +39,3 @@ def repeat():
     t.ontimer(repeat, STEPSIZE)
 
 t.listen()
-t.mainloop()

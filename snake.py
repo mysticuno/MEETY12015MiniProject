@@ -54,7 +54,7 @@ score = 0
 scoreboard = turtle.clone()
 food_score = 20
 # Write the initial scoreboard. This will increment every 100 points.
-scoreboard.setpos(MIN_X, MIN_Y-50)
+scoreboard.goto(MIN_X, MIN_Y-50)
 scoreboard.write("Score: %s" % score, align="center", font=("Arial", 20, "bold"))
 
 # Create and draw the initial snake
@@ -70,7 +70,7 @@ def add_segment_to_front():
 snake = turtle.clone()
 snake.shape("square")
 for i in range(INITIAL_SNAKE_LENGTH):
-    snake.setpos(snake.pos()[0] + SQUARE_WIDTH, snake.pos()[1])
+    snake.goto(snake.pos()[0] + SQUARE_WIDTH, snake.pos()[1])
     add_segment_to_front()
 
 # Determine which moves are allowed from current heading
@@ -81,13 +81,13 @@ def allowed_move(direction):
 # snake turtle to match.
 def calculate_next_pos():
     if current_direction==RIGHT:
-        snake.setpos(snake.pos()[0] + SQUARE_WIDTH, snake.pos()[1])
+        snake.goto(snake.pos()[0] + SQUARE_WIDTH, snake.pos()[1])
     elif current_direction==LEFT:
-        snake.setpos(snake.pos()[0] - SQUARE_WIDTH, snake.pos()[1])
+        snake.goto(snake.pos()[0] - SQUARE_WIDTH, snake.pos()[1])
     elif current_direction==UP:
-        snake.setpos(snake.pos()[0], snake.pos()[1] + SQUARE_WIDTH)
+        snake.goto(snake.pos()[0], snake.pos()[1] + SQUARE_WIDTH)
     elif current_direction==DOWN:
-        snake.setpos(snake.pos()[0], snake.pos()[1] - SQUARE_WIDTH)
+        snake.goto(snake.pos()[0], snake.pos()[1] - SQUARE_WIDTH)
 
 # Increase the score on the scoreboard. Increase the level if appropriate.
 def increment_score():
@@ -113,11 +113,11 @@ def detect_collision():
         food_positions.pop(food_index)
         
         current_snake_pos = snake.pos()
-        snake.setpos(snake_positions[0])
+        snake.goto(snake_positions[0])
 
         snake_positions.insert(0, snake.pos())
         snake_stamps.insert(0, snake.stamp())
-        snake.setpos(current_snake_pos)
+        snake.goto(current_snake_pos)
 
         increment_score()
     return (not (x_ok and y_ok)) or collides_with_self or collides_with_trash
@@ -126,7 +126,7 @@ def detect_collision():
 def trigger_game_over():
     global game_over
     game_over = True
-    turtle.setpos(0,0)
+    turtle.goto(0,0)
     turtle.write("GAME OVER!", align="center", font=("Arial", 48, "bold"))
 
 # Move the snake by a step
@@ -183,7 +183,7 @@ food.shape("apple.gif")
 def spawn_food():
     if game_over:
         return
-    food.setpos(random.randint(int(MIN_X/20)+1,int(MAX_X)/20-1)*20, 
+    food.goto(random.randint(int(MIN_X/20)+1,int(MAX_X)/20-1)*20, 
                 random.randint(int(MIN_Y)/20+1, int(MAX_Y)/20-1)*20)
     food_positions.append(food.pos())
     food_stamps.append(food.stamp())
@@ -202,7 +202,7 @@ trash.shape("cokebottle.gif")
 def spawn_trash():
     if game_over:
         return
-    trash.setpos(random.randint(int(MIN_X/20)+1, int(MAX_X)/20-1)*20 - 10, 
+    trash.goto(random.randint(int(MIN_X/20)+1, int(MAX_X)/20-1)*20 - 10, 
                  random.randint(int(MIN_Y)/20+1, int(MAX_Y)/20-1)*20 - 10)
     trash.stamp()
     trash_positions.append((trash.pos()[0]+10, trash.pos()[1]+10))
